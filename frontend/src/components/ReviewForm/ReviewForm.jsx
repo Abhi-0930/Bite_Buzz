@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./ReviewForm.css"; // Assuming this is the path to your CSS
-import axios from "axios"
+import axios from "axios";
+
 const ReviewForm = () => {
   const [name, setName] = useState("");
   const [review, setReview] = useState("");
@@ -11,24 +12,24 @@ const ReviewForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    try {
-  const response = await axios.post("https://bite-buzz-backend-khp4.onrender.com/api/reviews", {
-    name,
-    email,
-    review,
-    rating,
-  });
-  
-  toast.success(response.data.message); // Display success message
-  setName("");
-  setReview("");
-  setEmail("");
-  setRating(3); // Reset rating to the default middle value
-} catch (error) {
-  toast.error("Error submitting review. Please try again.");
-}
 
+    try {
+      const response = await axios.post("https://bite-buzz-backend-khp4.onrender.com/api/reviews", {
+        name,
+        email,
+        review,
+        rating,
+      });
+
+      toast.success(response.data.message); // Display success message
+      setName("");
+      setReview("");
+      setEmail("");
+      setRating(3); // Reset rating to the default middle value
+    } catch (error) {
+      toast.error("Error submitting review. Please try again.");
+    }
+  };
 
   return (
     <div className="review-form-container">
@@ -92,3 +93,4 @@ const ReviewForm = () => {
 };
 
 export default ReviewForm;
+
