@@ -13,23 +13,22 @@ const ReviewForm = () => {
     e.preventDefault();
     
     try {
-      const response = await axios.post("http://localhost:4000
-/api/reviews", {
-        name,
-        email,
-        review,
-        rating,
-      });
-      
-      toast.success(response.data.message); // Display success message
-      setName("");
-      setReview("");
-      setEmail("");
-      setRating(3); // Reset rating to the default middle value
-    } catch (error) {
-      toast.error("Error submitting review. Please try again.");
-    }
-  };
+  const response = await axios.post("https://bite-buzz-backend-khp4.onrender.com/api/reviews", {
+    name,
+    email,
+    review,
+    rating,
+  });
+  
+  toast.success(response.data.message); // Display success message
+  setName("");
+  setReview("");
+  setEmail("");
+  setRating(3); // Reset rating to the default middle value
+} catch (error) {
+  toast.error("Error submitting review. Please try again.");
+}
+
 
   return (
     <div className="review-form-container">
